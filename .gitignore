@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Everything downloaded or generated lives in data/ and never goes to git:
+# the API cache, parquet files, pitwall.duckdb, fitted models, live recordings
+data/
+
+# Secrets — OpenF1 login for the live feed (from M7 on)
+.env
+.streamlit/secrets.toml
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pit-wall"
+version = "0.1.0"
+description = "F1 tyre-degradation model and race-strategy optimiser built on OpenF1 data."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "Shubh Kandpal" }]
+dependencies = [
+  "requests>=2.31",
+  "pandas>=2.2",
+  "pyarrow>=15",
+  "duckdb>=1.0",
+  "numpy>=1.26",
+  "scipy>=1.12",
+  "pymc>=5.10",
+  "arviz>=0.17",
+  "lightgbm>=4.3",
+  "matplotlib>=3.8",
+  "pyyaml>=6.0",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6", "pre-commit>=3.7"]
+app = ["streamlit>=1.35", "plotly>=5.20"]
+rl = ["gymnasium>=0.29", "stable-baselines3>=2.3"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pitwall"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["pitwall"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

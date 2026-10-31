@@ -1,0 +1,21 @@
+# Runs on every `git commit`. Install once with: pre-commit install
+# Bump the pinned versions now and then with: pre-commit autoupdate
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.5
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      # Stops a database, parquet file or recording from ever reaching git by accident.
+      - id: check-added-large-files
+        args: ["--maxkb=2000"]
